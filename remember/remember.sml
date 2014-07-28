@@ -8,6 +8,9 @@ exception Undefined;
  * cette factorielle illustre bien
  * l'utilisation de fonctions imbriquées permettant
  * la récursion terminale.
+ *
+ * Le typage du paramètre nous assure de l'utilisation des bignumbers avec mlton
+ * et ne change rien avec PolyML
  *)
 fun fact n:IntInf.int =
 let
@@ -59,7 +62,7 @@ end;
 
 val default_value:IntInf.int = 10;
 
-fun get_undifined () = 
+fun get_undefined () = 
 let
   val m = default_value;
 in
@@ -69,11 +72,9 @@ end;
 fun get_fact_arg [] = default_value
   | get_fact_arg (h::t) = 
   case (IntInf.fromString h)
-    of NONE => get_undifined ()
+    of NONE => get_undefined ()
      | SOME m => m;
-(*
- * val args = CommandLine.arguments ()
- *)
+
 fun main () = 
 let
   val args = CommandLine.arguments ();

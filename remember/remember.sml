@@ -2,7 +2,14 @@
 * remember.ml
 * se souvenir des bases de ML
 *)
-exception Undefined;
+exception Negative;
+
+fun on_error message = 
+let 
+  val _ = print ("ERROR : " ^ message ^ "\n"); 
+in  
+  1
+end;
 
 (* 
 * cette factorielle illustre bien
@@ -28,13 +35,16 @@ end;
 * l'utilisation de fonctions imbriquées permettant
 * la récursion terminale.
 * En plus, on utilise la définition d'une fonction avec les filtres.
+* Et on lance une exception en cas de valeur négative de l'argument.
 *)
 fun fact2 n:IntInf.int =
 let
   fun inner_fact (acc, 0) = acc
     | inner_fact (acc, k) = inner_fact (acc * k, k - 1);
 in
-  inner_fact (1, n)
+  if n < 0 
+  then raise Negative
+  else inner_fact (1, n)
 end;
 
 (*
@@ -46,14 +56,15 @@ fun printVal x = print (IntInf.toString x);
 
 fun test_f (f, arg, fname) =
 let
-  val result = f arg;      
+  val result = IntInf.toString (f arg);
 in    
   print (fname);
   print (" ");
   printVal (arg);
   print (" -> ");
-  printVal (result);
-  print ("\n")
+  print (result);
+  print ("\n");
+  0
 end;  
 
 fun test_f_on_n (f, fname, 0) = test_f (f, 0, fname)
@@ -62,7 +73,8 @@ fun test_f_on_n (f, fname, 0) = test_f (f, 0, fname)
     val km = k - 1;
 in  
   test_f (f, k, fname);
-  test_f_on_n (f, fname, km)
+  test_f_on_n (f, fname, km);
+  0
 end;    
 
 
@@ -86,8 +98,10 @@ let
 
   val arg1 = get_fact_arg (args);
 
-  in  
-    test_f_on_n (fact2, "!", arg1)
-  end;
+  val retval = test_f_on_n (fact2, "!", arg1)
+      handle Negative => on_error "Negative value";
+in  
+  retval
+end;
 
 main ();

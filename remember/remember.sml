@@ -1,17 +1,17 @@
 (*
- * remember.ml
- * se souvenir des bases de ML
- *)
+* remember.ml
+* se souvenir des bases de ML
+*)
 exception Undefined;
 
 (* 
- * cette factorielle illustre bien
- * l'utilisation de fonctions imbriquées permettant
- * la récursion terminale.
- *
- * Le typage du paramètre nous assure de l'utilisation des bignumbers avec mlton
- * et ne change rien avec PolyML
- *)
+* cette factorielle illustre bien
+* l'utilisation de fonctions imbriquées permettant
+* la récursion terminale.
+*
+* Le typage du paramètre nous assure de l'utilisation des bignumbers avec mlton
+* et ne change rien avec PolyML
+*)
 fun fact n:IntInf.int =
 let
   fun inner_fact (acc, k) =
@@ -24,11 +24,11 @@ end;
 
 
 (* 
- * Cette factorielle illustre bien
- * l'utilisation de fonctions imbriquées permettant
- * la récursion terminale.
- * En plus, on utilise la définition d'une fonction avec les filtres.
- *)
+* Cette factorielle illustre bien
+* l'utilisation de fonctions imbriquées permettant
+* la récursion terminale.
+* En plus, on utilise la définition d'une fonction avec les filtres.
+*)
 fun fact2 n:IntInf.int =
 let
   fun inner_fact (acc, 0) = acc
@@ -37,7 +37,12 @@ in
   inner_fact (1, n)
 end;
 
+(*
+* affiche un entier sur la console
+*)
 fun printVal x = print (IntInf.toString x);
+
+
 
 fun test_f (f, arg, fname) =
 let
@@ -60,27 +65,29 @@ in
   test_f_on_n (f, fname, km)
 end;    
 
-val default_value:IntInf.int = 10;
-
-fun get_undefined () = 
-let
-  val m = default_value;
-in
-  m
-end;
-
-fun get_fact_arg [] = default_value
-  | get_fact_arg (h::t) = 
-  case (IntInf.fromString h)
-    of NONE => get_undefined ()
-     | SOME m => m;
 
 fun main () = 
 let
   val args = CommandLine.arguments ();
+  val default_value:IntInf.int = 10;
+
+  fun get_undefined () = 
+  let
+    val m = default_value;
+  in
+    m
+  end;
+
+  fun get_fact_arg [] = default_value
+    | get_fact_arg (h::t) = 
+    case (IntInf.fromString h)
+      of NONE => get_undefined ()
+       | SOME m => m;
+
   val arg1 = get_fact_arg (args);
-in  
-  test_f_on_n (fact2, "!", arg1)
-end;
+
+  in  
+    test_f_on_n (fact2, "!", arg1)
+  end;
 
 main ();

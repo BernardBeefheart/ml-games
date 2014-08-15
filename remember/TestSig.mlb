@@ -19,16 +19,12 @@ end
 *)
 
 local
-	local
-		Lambda.sml
-	in
-		structure Lambda
-	end
-	local
-		BtIO.sml
-	in
-		structure BtIO
-	end
+	(* import Basis Library *)
+	$(SML_LIB)/basis/basis.mlb
+	Lambda.sml
+	BtIO.sml
 in
+	structure Lambda
+	structure BtIO
 	TestSig.sml
 end	

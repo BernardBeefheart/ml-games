@@ -2,22 +2,6 @@
  * TestSig.mlb
  *)
 
-(*
-ann
-   "deadCode true"
-   "sequenceNonUnit warn"
-   "nonexhaustiveMatch warn" "redundantMatch warn"
-   "warnUnused true" "forceUsed"
-in
-	local
-	in
-		Lambda.sml
-		BtIO.sml
-		TestSig.sml
-	end
-end
-*)
-
 local
 	(* import Basis Library *)
 	$(SML_LIB)/basis/basis.mlb

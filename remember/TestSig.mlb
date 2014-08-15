@@ -5,8 +5,8 @@
 local
 	(* import Basis Library *)
 	$(SML_LIB)/basis/basis.mlb
-	Lambda.sml
-	BtIO.sml
+	../blib/Lambda.sml
+	../blib/BtIO.sml
 in
 	structure Lambda
 	structure BtIO

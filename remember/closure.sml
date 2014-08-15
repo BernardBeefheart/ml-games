@@ -1,7 +1,7 @@
 (*
-* closure.sml
-* les fermetures en SML
-*)
+ * closure.sml
+ * les fermetures en SML
+ *)
 
 fun make_compteur () =
 let

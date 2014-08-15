@@ -1,0 +1,34 @@
+(*
+ * TestSig.mlb
+ *)
+
+(*
+ann
+   "deadCode true"
+   "sequenceNonUnit warn"
+   "nonexhaustiveMatch warn" "redundantMatch warn"
+   "warnUnused true" "forceUsed"
+in
+	local
+	in
+		Lambda.sml
+		BtIO.sml
+		TestSig.sml
+	end
+end
+*)
+
+local
+	local
+		Lambda.sml
+	in
+		structure Lambda
+	end
+	local
+		BtIO.sml
+	in
+		structure BtIO
+	end
+in
+	TestSig.sml
+end	

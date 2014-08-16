@@ -1,0 +1,13 @@
+(*
+ * remember.mlb
+ *)
+
+local
+	(* import Basis Library *)
+	$(SML_LIB)/basis/basis.mlb
+	../blib/BtIO.sml
+in
+	structure BtIO
+	remember.sml
+end	
+

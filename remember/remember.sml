@@ -2,14 +2,11 @@
 * remember.ml
 * se souvenir des bases de ML
 *)
+
+open BtIO;
+
 exception Negative;
 
-fun on_error message = 
-let 
-  val _ = print ("ERROR : " ^ message ^ "\n"); 
-in  
-  1
-end;
 
 (* 
 * cette factorielle illustre bien
@@ -47,11 +44,6 @@ in
   else inner_fact (1, n)
 end;
 
-(*
-* affiche un entier sur la console
-*)
-fun printVal x = print (IntInf.toString x);
-
 
 
 fun test_f (f, arg, fname) =
@@ -60,11 +52,11 @@ let
 in    
   print (fname);
   print (" ");
-  printVal (arg);
+  printIntInf (arg);
   print (" -> ");
   print (result);
   print ("\n");
-  0
+  SUCCESS
 end;  
 
 fun test_f_on_n (f, fname, 0) = test_f (f, 0, fname)
@@ -74,7 +66,7 @@ fun test_f_on_n (f, fname, 0) = test_f (f, 0, fname)
 in  
   test_f (f, k, fname);
   test_f_on_n (f, fname, km);
-  0
+  SUCCESS
 end;    
 
 
@@ -99,7 +91,7 @@ let
   val arg1 = get_fact_arg (args);
 
   val retval = test_f_on_n (fact2, "!", arg1)
-      handle Negative => on_error "Negative value";
+      handle Negative => onError "Negative value";
 in  
   retval
 end;

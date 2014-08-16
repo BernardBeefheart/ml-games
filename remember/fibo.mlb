@@ -1,0 +1,13 @@
+(*
+ * fibo.mlb
+ * generated on dim 17 aoû 2014 01:41:48 CEST
+ *)
+
+local
+	(* import Basis Library *)
+	$(SML_LIB)/basis/basis.mlb
+		../blib/BtIO.sml
+in
+		structure BtIO
+		fibo.sml
+end	

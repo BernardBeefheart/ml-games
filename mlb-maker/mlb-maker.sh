@@ -88,6 +88,7 @@ mlbname=$name.mlb
 cat > $mlbname << EOMLB
 (*
  * $mlbname
+ * generated on $(date)
  *)
 
 local

@@ -7,11 +7,13 @@
 
 open BtIO;
 
-val ARRAY_SIZE : int = 20000;
+exception BadArgument;
+exception NegativeArgument;
+exception NoArgument;
 
-fun fibo_maker() =
+fun fibo_maker n =
 let
-  val  fibo_values : IntInf.int option array = Array.array(ARRAY_SIZE, NONE);
+  val  fibo_values : IntInf.int option array = Array.array(n+1, NONE);
 
   val _ = Array.update(fibo_values, 0, SOME 0)
   val _ = Array.update(fibo_values, 1, SOME 1);
@@ -20,44 +22,36 @@ let
   fun get_fibo 1 = 1
     | get_fibo 2 = 1
     | get_fibo k =
-    if k < ARRAY_SIZE
-    then
-        case Array.sub (fibo_values, k)
-          of SOME r => r
-           | NONE =>
-               let
-                 val f = get_fibo (k - 1) + get_fibo (k - 2);
-               in
-                 Array.update (fibo_values, k, SOME f);
-                 f
-               end
-    else
-      0
+    case Array.sub (fibo_values, k)
+      of SOME r => r
+       | NONE =>
+           let
+             val f = get_fibo (k - 1) + get_fibo (k - 2);
+           in
+             Array.update (fibo_values, k, SOME f);
+             f
+           end
 in
   get_fibo
 end;
+
+fun get_fact_arg [] = raise NoArgument
+  | get_fact_arg (h::t) = 
+  case (Int.fromString h)
+    of NONE => raise BadArgument
+     | SOME m => if m > 0
+                 then m
+                 else raise NegativeArgument;
 
 fun main () =
 let
   val args = CommandLine.arguments ();
   val default_value:Int.int = 10;
-  
-  fun get_undefined () = 
-  let
-    val m = default_value;
-  in
-    m
-  end;
 
-  fun get_fact_arg [] = default_value
-    | get_fact_arg (h::t) = 
-    case (Int.fromString h)
-      of NONE => get_undefined ()
-       | SOME m => m;
 
   val arg1 = get_fact_arg (args);
 
-  val fbm = fibo_maker();
+  val fbm = fibo_maker(arg1);
 
   fun show_fibo k = 
   let
@@ -74,12 +68,16 @@ let
     | show_all_fibos n = 
     let
       val _ = show_fibo n;
-    in
-      show_all_fibos (n - 1)
-    end;
+  in
+    show_all_fibos (n - 1)
+  end;
 
 in
-    show_all_fibos arg1
-end;
+  show_all_fibos arg1;
+  print ""
+end
+handle NoArgument => print "We need an argument (positive integer)\n"
+  | BadArgument => print "The argument must be a positive integer\n"
+  | NegativeArgument => print "The argument must be a positive integer\n";
 
 main();

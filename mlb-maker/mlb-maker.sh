@@ -33,6 +33,13 @@ allstruct() {
 	done
 }
 
+allopen() {
+	for l in $libs
+	do
+		echo "open $(basename $l);" | sed 's/\.sml$//'
+	done
+}
+
 allfiles() {
 	for f in $files
 	do
@@ -84,11 +91,12 @@ done
 
 
 mlbname=$name.mlb
+smlname=$name.sml
 
 cat > $mlbname << EOMLB
 (*
  * $mlbname
- * generated on $(date)
+ * generated on $(date) by $USER
  *)
 
 local
@@ -101,4 +109,22 @@ in
 end	
 EOMLB
 
-echo $mlbname
+echo "$mlbname done"
+
+if ! [ -f $smlname ]
+then
+	cat > $smlname << EOSML
+(*
+ * $smlname
+ * generated on $(date) by $USER
+ *)
+
+ $(allopen)
+
+fun main () =
+	0;
+
+main ();	
+EOSML
+fi
+

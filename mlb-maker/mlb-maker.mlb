@@ -1,0 +1,13 @@
+(*
+ * mlb-maker.mlb
+ * generated on lun 18 aoû 2014 15:47:11 CEST by bernard
+ *)
+
+local
+	(* import Basis Library *)
+	$(SML_LIB)/basis/basis.mlb
+		../blib/BtIO.sml
+in
+		structure BtIO
+		mlb-maker.sml
+end	

@@ -15,4 +15,13 @@ y a quoi là dedans
 
 Il y a du code, essentiellement, du texte, dans le _wiki_, le tout étant mis à jour avec plus ou moins de régularité.
 
-Le répertoire __remember__ est là pour (re)débuter avec le langage, ce n'est pas la première fois que je l'explore.
+
+Le répertoire __remember__ est là pour (re)débuter avec le langage, ce n'est pas la première fois que je l'explore, mais c'est la première fois que je m'y met vraiment pleinement. On y trouve un ensemble de programmes assez courts qui devraient aidé le débutant.
+
+Le répertoire __mlb-maker__ contient pur l'instant un script qui permet de créer un fichier _mlb_ pour une compilation de plusieurs sources avec _mlton_.
+
+Le répertoire __blib__ contient un ensemble de fichiers permetttant de faire une _bibliothèque_, bien grand mot pour l'instant, et m'évitant de faire d'incessants copier/coller d'un source à l'autre.
+
+Si les curieux explorent les autres répertoires, ils seront déçus pour le moment. J'espère que cela changera rapidement.
+
+

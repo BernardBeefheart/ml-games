@@ -13,7 +13,11 @@ exception NoArgument;
 
 fun fibo_maker n =
 let
-  val  fibo_values : IntInf.int option array = Array.array(n+1, NONE);
+  val array_dim = if n > 2
+                  then n + 1
+                  else 3
+
+  val  fibo_values : IntInf.int option array = Array.array(array_dim, NONE);
 
   val _ = Array.update(fibo_values, 0, SOME 0)
   val _ = Array.update(fibo_values, 1, SOME 1);

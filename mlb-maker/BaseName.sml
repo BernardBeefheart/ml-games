@@ -9,7 +9,6 @@
 
 structure BaseName: BASENAME =
 struct
-
   local
     fun get_base_name [] acc = rev acc
       | get_base_name (#"/" :: t) _ =  get_base_name t []
@@ -20,13 +19,6 @@ struct
       | del_extension (h :: t) acc = del_extension t (h :: acc);
   in      
     fun base_name file_name =
-    let
-      val lst = explode file_name;
-
-
-    in
-      implode (del_extension (get_base_name lst []) [])
-    end; 
+      implode (del_extension (get_base_name (explode file_name) []) []);
   end; 
-
 end;

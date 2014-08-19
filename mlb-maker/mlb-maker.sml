@@ -11,11 +11,13 @@ let
               of SOME r => r
                 | NONE => "<unknown user>";
 
+  val now = Date.toString (Date.fromTimeLocal (Time.now ()))                
+
   fun file_header name extension = (
     printLn ["(*"];
-    printLn [" * ", name, ".", extension];
+    printLn [" * ", name, extension];
     printLn [" * author ", user];
-    printLn [" * date ", Date.toString (Date.fromTimeLocal (Time.now ()))];
+    printLn [" * date ", now];
     printLn [" *)"]; 
     printLn [""] 
     );
@@ -26,11 +28,14 @@ let
         print_list_of_files t text_before
         );
 
-  fun file_libs libs = print_list_of_files libs "\t";
+  fun file_libs libs = 
+    print_list_of_files libs "\t";
 
-  fun file_files files = print_list_of_files files "\t";
+  fun file_files files = 
+    print_list_of_files files "\t";
 
-  fun structures libs = print_list_of_files (map base_name libs) "\tstructure";
+  fun structures libs = 
+    print_list_of_files (map base_name libs) "\tstructure";
 
   fun doit (files, libs, name) = (
     file_header name ".mlb";

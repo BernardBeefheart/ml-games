@@ -10,12 +10,12 @@ let
   val user = case OS.Process.getEnv "USER"
               of SOME r => r
                 | NONE => "<unknown user>";
-            
 
   fun file_header name extension = (
     printLn ["(*"];
     printLn [" * ", name, ".", extension];
-    printLN [" * created by ", user];
+    printLn [" * author ", user];
+    printLn [" * date ", Date.toString (Date.fromTimeLocal (Time.now ()))];
     printLn [" *)"]; 
     printLn [""] 
     );

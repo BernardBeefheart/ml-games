@@ -2,9 +2,9 @@
  * remember.mlb
  *)
 
+(* import Basis Library *)
+$(SML_LIB)/basis/basis.mlb
 local
-	(* import Basis Library *)
-	$(SML_LIB)/basis/basis.mlb
 	../blib/BtIO.sml
 in
 	structure BtIO

@@ -6,8 +6,13 @@
 local
 	(* import Basis Library *)
 	$(SML_LIB)/basis/basis.mlb
-		../blib/BtIO.sml
+	../blib/BtIO.sml
+	structure BtIO
+	MlbDecryptArgs.sml
+	BaseName.sml
 in
-		structure BtIO
-		mlb-maker.sml
+	structure BtIO
+	structure MlbDecryptArgs
+	structure BaseName
+	mlb-maker.sml
 end	

@@ -3,76 +3,50 @@
  * generated on lun 18 aoû 2014 15:47:11 CEST by bernard
  *)
 
-open BtIO;
+open BtIO MlbDecryptArgs BaseName;
 
-
-fun decrypt_args args =
+fun make_mlb values =
 let
-  val size = length args;
-  val files : string option array = Array.array(size, NONE);
-  val libs : string option array = Array.array(size, NONE);
-  val name : string option array = Array.array(size, NONE);
+  fun file_header name extension = (
+    printLn ["(*"];
+    printLn [" * ", name, ".", extension];
+    printLn [" *)"]; 
+    printLn [""] 
+    );
 
-  datatype decstate = DS_NONE | DS_LIBS | DS_FILES | DS_NAME;
+  fun print_list_of_files [] _ = print "\n"
+    | print_list_of_files (h :: t) text_before = (
+        printLn [text_before, h];
+        print_list_of_files t text_before
+        );
 
+  fun file_libs libs = print_list_of_files libs "\t";
 
+  fun file_files files = print_list_of_files files "\t";
 
-  fun idecrypt [] _ files libs name  = (files, libs, name)
-    | idecrypt ("--files"::t) _ files libs name =
-        idecrypt t DS_FILES files libs name 
-    | idecrypt ("--libs"::t) _ files libs name = 
-        idecrypt t DS_LIBS files libs name 
-    | idecrypt ("--name"::t) _ files libs name = 
-        idecrypt t DS_NAME files libs name 
-    | idecrypt (h::t) DS_LIBS files libs name =
-        idecrypt t DS_LIBS files (h :: libs) name
-    | idecrypt (h::t) DS_FILES files libs name =
-        idecrypt t DS_FILES (h :: files) libs name
-    | idecrypt (h::t) DS_NAME files libs name =
-        idecrypt t DS_NAME files libs h
-    | idecrypt _ DS_NONE files libs name =
-        (files, libs, name);
+  fun structures libs = print_list_of_files (map base_name libs) "\tstructure";
 
-  val result = idecrypt args DS_NONE [] [] "<no name>"
-
-  fun show_list message list =
-  let
-    val _ = print "liste ";
-    fun ishow [] = print "\n"
-      | ishow (h :: t) = 
-      let
-        val _ = print " ";
-      in
-        print h;
-        print "\n";
-        ishow t
-      end;
-  in
-    print message;
-    print "\n";
-    ishow list
-  end;
-
-  fun show_result (files, libs, name) =
-  let
-    val _ = show_list "files :" files;
-    val _ = show_list "libs : " libs;
-  in
-    print "name : ";
-   print name;
-   print "\n"
-  end;
+  fun doit (files, libs, name) = (
+    file_header name ".mlb";
+    print "local\n";
+    print "\t(* import Basis Library *)\n";
+    print "\t$(SML_LIB)/basis/basis.mlb\n";
+    file_libs libs;
+    print "in\n";
+    structures libs;
+    file_files files;
+    print "end\n"
+    );  
 in
-  show_result result
+  doit values
 end;
 
 fun main () =
 let
   val args = CommandLine.arguments ();
-  
-
+  val result = decrypt_args args;
 in
-  decrypt_args args
+  make_mlb result
 end;  
 
 

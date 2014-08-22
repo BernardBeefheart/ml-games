@@ -7,6 +7,8 @@ On notera que _SML/NJ_ fait partie des ancêtres de _OCaml_, de l'INRIA, et de _
 
 On notera aussi ma tendance à pratiquer la _programmation paresseuse_ qui consiste à ouvrir l'éditeur de texte, surveiller twitter, s'occuper du repas, revenir à l'éditeur et ainsi de suite. Ca prend du temps...
 
+N'hésitez pas à vous balader dans le wiki: https://github.com/BernardBeefheart/ml-games/wiki!
+
 pourquoi _ML_
 -------------
 

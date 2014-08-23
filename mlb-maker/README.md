@@ -30,6 +30,8 @@ Voici un bon exemple de session :
 	b@pcbsd-10 ~ (git)-[master] %
 
 En sortie, nous avons les deux fichiers __cestbon.mlb__ :
+
+	(*
 	 * cestbon.mlb
 	 * generated on sam 23 aoû 2014 23:46:28 CEST by bernard
 	 *)

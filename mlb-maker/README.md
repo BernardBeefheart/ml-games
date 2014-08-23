@@ -13,9 +13,9 @@ Voici l'aide proposée :
 
 Le script a besoin de trois groupes de paramètres :
 
-* _--files_ : l'ensemble des fichiers sources,
-* _--libs_ : l'ensemble des fichiers bibliothèques,
-* _--name_ : le nom des fichier __.mlb__ et __.sml__ produits.
+* _--files_ : l'ensemble des fichiers sources, au moins un,
+* _--libs_ : l'ensemble des fichiers bibliothèques, 0 ou plus,
+* _--name_ : le nom des fichier __.mlb__ et __.sml__ produits, un seul nom.
 
 Voici un bon exemple de session :
 

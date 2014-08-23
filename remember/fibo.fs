@@ -23,28 +23,33 @@ let mfibo n =
     get_fibo;;
 
 
-let dohelp () =
-    printfn "fibo.exe Number"
-    0;;
+let dohelp exitValue =
+    printfn "Usage:"
+    printfn "   fibo.exe Number"
+    exitValue;;
 
 let doit astr =
-    let v = int astr
-    let lafibo = mfibo v
+    try
+        let v = int astr
+        let lafibo = mfibo v
 
-    let show_fibo k =
-        let fk = lafibo k
-        let sfk = string fk
-        printfn "fibo %d = %s" k sfk
+        let show_fibo k =
+            let fk = lafibo k
+            let sfk = string fk
+            printfn "fibo %d = %s" k sfk
 
-    let rec show_all_fibos n =
-        match n with
-        | 0 -> show_fibo 0
-        | _ ->
-        let _ = show_fibo n
-        show_all_fibos (n - 1)
+        let rec show_all_fibos n =
+            match n with
+            | 0 -> show_fibo 0
+            | _ ->
+            let _ = show_fibo n
+            show_all_fibos (n - 1)
 
-    show_all_fibos v
-    0;;
+        show_all_fibos v
+        0
+    with
+        | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1;;
+
 
 
 [<EntryPoint>]
@@ -53,5 +58,5 @@ let main args =
 
     if l = 1
         then doit args.[0]
-        else dohelp ();;
+        else dohelp 0;;
 

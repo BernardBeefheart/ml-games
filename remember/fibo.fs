@@ -8,11 +8,19 @@
 module fibo
 
 let mfibo n =
-    let (memo : bigint array) = Array.zeroCreate (n + 1)
+    let (memo : bigint array) = Array.zeroCreate (n + 3)
+
+    let rec resetmemo k =
+        if k >= 0
+        then memo.[k] <- 0I; resetmemo (k - 1)
+        else 0
+
+    let result_reset = resetmemo (n + 2)
 
     let rec get_fibo = function
         | 0 -> 0I
         | 1 -> 1I
+        | 2 -> 1I
         | n -> if memo.[n] = 0I
                     then
                         let f = get_fibo (n - 1) + get_fibo (n - 2)
@@ -34,15 +42,14 @@ let doit astr =
         let lafibo = mfibo v
 
         let show_fibo k =
-            let fk = lafibo k
-            let sfk = string fk
+            let sfk = string (lafibo k)
             printfn "fibo %d = %s" k sfk
 
         let rec show_all_fibos n =
             match n with
             | 0 -> show_fibo 0
             | _ ->
-            let _ = show_fibo n
+            show_fibo n
             show_all_fibos (n - 1)
 
         show_all_fibos v

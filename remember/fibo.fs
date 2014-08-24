@@ -8,8 +8,7 @@
  * fsharpc --warn:5 --consolecolors+ --standalone --out:fsfibo.exe --tailcalls+ --optimize+ fibo.fs
  *
  * valeur maximale du paramètre acceptable sans erreur : 15361
- * problème de pile? de taille de tableau? dépassement de capacité
- * des bigint?
+ * problème de pile!
  *
  *)
 
@@ -63,11 +62,20 @@ let doit str_numberOfTests =
         let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
 
         let rec show_all_fibos n =
+            if n = numberOfTests
+            then show_fibo n
+            else show_fibo n; show_all_fibos (n + 1)
+
+        (* 
+        let rec show_all_fibos n =
             match n with
             | 0 -> show_fibo 0
             | _ -> show_fibo n; show_all_fibos (n - 1)
 
         show_all_fibos numberOfTests
+        *)
+
+        show_all_fibos 0
         0
     with
         | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1

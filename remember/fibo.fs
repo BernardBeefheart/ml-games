@@ -1,5 +1,6 @@
 (*
  * fibo.fs
+ *
  * version FSharp
  * calcul des nombres de Fibonacci avec memoïzation
  * 
@@ -24,19 +25,17 @@ let dohelp exitValue =
     exitValue;;
 
 (*
- * mfibo
+ * memoiseFibo
  * mémoïsation de la suite de fibonacci
  * renvoie la vraie fonction de calcul de fibonacci
  *)
-let mfibo n =
+let memoiseFibo n =
     let (memo : bigint array) = Array.zeroCreate (n + 3)
 
-    let rec resetmemo k =
+    let rec resetMemo k =
         if k >= 0
-        then memo.[k] <- 0I; resetmemo (k - 1)
-        else 0
-
-    let result_reset = resetmemo (n + 2)
+        then memo.[k] <- 0I; resetMemo (k - 1)
+        else ()
 
     let rec get_fibo = function
         | 0 -> 0I
@@ -49,6 +48,7 @@ let mfibo n =
                         f
                     else memo.[n]
 
+    resetMemo (n + 2)
     get_fibo;;
 
 (*
@@ -58,7 +58,7 @@ let mfibo n =
 let doit str_numberOfTests =
     try
         let numberOfTests = int str_numberOfTests
-        let lafibo = mfibo numberOfTests
+        let lafibo = memoiseFibo numberOfTests
 
         let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
 
@@ -70,7 +70,8 @@ let doit str_numberOfTests =
         show_all_fibos numberOfTests
         0
     with
-        | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1;;
+        | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1
+        | _ -> eprintfn "Default?"; dohelp 2;;
 
 
 

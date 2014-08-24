@@ -30,7 +30,7 @@ __Note__: cette version ne compile pas pour un problème de signature.
 TestSig.sml
 -----------
 
-Pour m'entrîner avec les signatures...
+Pour m'entraîner avec les signatures...
 
 les fichiers _.mlb_ et _Makefile_
 ---------------------------------
@@ -39,8 +39,8 @@ Le __Makefile__ permet de compiler tout ce petit monde avec _F#_ ou __mlton__ ta
 
 Les exécutables et les fichiers temporaires se retrouvent dans un sous-répertoire nommé _o_. Les cibles de compilation sont :
 
-*  _fsexes_: compilations avec _F#_ des sources en _*.fs_,
-*  _smlexes_ : complations avec _mlton_ des sources en _*.sml_ à l'aides des fichiers _*.mlb_,
+*  _fsexes_: compilation, avec _F#_, des sources en _*.fs_,
+*  _smlexes_ : compilation, avec _mlton_, des sources en _*.sml_ à l'aides des fichiers _*.mlb_,
 *  _all_ : les deux cibles précédentes,
 *  _clean_ : nettoie les exécutables et les éventuels résidus de compilation.
 

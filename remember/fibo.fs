@@ -2,11 +2,32 @@
  * fibo.fs
  * version FSharp
  * calcul des nombres de Fibonacci avec memoïzation
- * calcul jusqu'à 46 pour les entiers 32 bits
+ * 
+ * compilation (PCBSD):
+ * fsharpc --warn:5 --consolecolors+ --standalone --out:fsfibo.exe --tailcalls+ --optimize+ fibo.fs
+ *
+ * valeur maximale du paramètre acceptable sans erreur : 15361
+ * problème de pile? de taille de tableau? dépassement de capacité
+ * des bigint?
+ *
  *)
 
 module fibo
 
+(*
+ * dohelp :
+ * affiche un texte d'aide et retourne son paramètre
+ *)
+let dohelp exitValue =
+    printfn "Usage:"
+    printfn "   fibo.exe Number"
+    exitValue;;
+
+(*
+ * mfibo
+ * mémoïsation de la suite de fibonacci
+ * renvoie la vraie fonction de calcul de fibonacci
+ *)
 let mfibo n =
     let (memo : bigint array) = Array.zeroCreate (n + 3)
 
@@ -30,29 +51,23 @@ let mfibo n =
 
     get_fibo;;
 
-
-let dohelp exitValue =
-    printfn "Usage:"
-    printfn "   fibo.exe Number"
-    exitValue;;
-
-let doit astr =
+(*
+ * doit
+ * boucle principale
+ *)
+let doit str_numberOfTests =
     try
-        let v = int astr
-        let lafibo = mfibo v
+        let numberOfTests = int str_numberOfTests
+        let lafibo = mfibo numberOfTests
 
-        let show_fibo k =
-            let sfk = string (lafibo k)
-            printfn "fibo %d = %s" k sfk
+        let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
 
         let rec show_all_fibos n =
             match n with
             | 0 -> show_fibo 0
-            | _ ->
-            show_fibo n
-            show_all_fibos (n - 1)
+            | _ -> show_fibo n; show_all_fibos (n - 1)
 
-        show_all_fibos v
+        show_all_fibos numberOfTests
         0
     with
         | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1;;

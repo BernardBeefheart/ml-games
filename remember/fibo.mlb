@@ -6,8 +6,12 @@
 local
 	(* import Basis Library *)
 	$(SML_LIB)/basis/basis.mlb
-		../blib/BtIO.sml
+	../blib/BtIO.sml
+	../blib/ShowResults.sml
+	../blib/GetArgs.sml
 in
-		structure BtIO
-		fibo.sml
+	structure BtIO
+	structure ShowResults
+	structure GetArgs
+	fibo.sml
 end	

@@ -3,9 +3,8 @@
 * se souvenir des bases de ML
 *)
 
-open BtIO;
+open BtIO ShowResults GetArgs;
 
-exception Negative;
 
 
 (*
@@ -34,13 +33,13 @@ end;
 * En plus, on utilise la définition d'une fonction avec les filtres.
 * Et on lance une exception en cas de valeur négative de l'argument.
 *)
-fun fact2 n:IntInf.int =
+fun fact2 n =
 let
   fun inner_fact (acc, 0) = acc
     | inner_fact (acc, k) = inner_fact (acc * k, k - 1);
 in
   if n < 0
-  then raise Negative
+  then raise GetArgs.Negative
   else inner_fact (1, n)
 end;
 
@@ -72,28 +71,14 @@ end;
 
 fun main () =
 let
-  val args = CommandLine.arguments ();
-  val default_value:IntInf.int = 10;
-
-  fun get_undefined () =
-  let
-    val m = default_value;
-  in
-    m
-  end;
-
-  fun get_fact_arg [] = default_value
-    | get_fact_arg (h::t) =
-    case (IntInf.fromString h)
-      of NONE => get_undefined ()
-       | SOME m => m;
-
-  val arg1 = get_fact_arg (args);
+  val arg1 = get_fact_arg (CommandLine.arguments ());
 
   val retval = test_f_on_n (fact2, "!", arg1)
-      handle Negative => onError "Negative value";
-in
-  retval
-end;
+  handle GetArgs.NoArgument => print "We need an argument (positive integer)\n"
+    | GetArgs.BadArgument => print "The argument must be a positive integer\n"
+    | GetArgs.NegativeArgument => print "The argument must be a positive integer\n";
+  in
+    retval
+  end;
 
-main ();
+  main ();

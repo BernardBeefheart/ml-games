@@ -6,8 +6,12 @@
 $(SML_LIB)/basis/basis.mlb
 local
 	../blib/BtIO.sml
+	../blib/ShowResults.sml
+	../blib/GetArgs.sml
 in
 	structure BtIO
+	structure ShowResults
+	structure GetArgs
 	remember.sml
 end	
 

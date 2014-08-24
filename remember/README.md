@@ -25,6 +25,8 @@ remember.sml
 
 C'est le premier programme que j'ai écrit. Très simple au début, il s'est étoffé de ce dont j'avais besoin. Il calcul les factorielles.
 
+__Note__: cette version ne compile pas pour un problème de signature.
+
 TestSig.sml
 -----------
 
@@ -33,7 +35,14 @@ Pour m'entrîner avec les signatures...
 les fichiers _.mlb_ et _Makefile_
 ---------------------------------
 
-Le __Makefile__ permet de compiler tout ce petit monde avec __mlton__ tandis que les fichiers __.mlb__ sont les fichiers de compilations pour __mlton__.
+Le __Makefile__ permet de compiler tout ce petit monde avec _F#_ ou __mlton__ tandis que les fichiers __.mlb__ sont les fichiers de compilations pour __mlton__.
+
+Les exécutables et les fichiers temporaires se retrouvent dans un sous-répertoire nommé _o_. Les cibles de compilation sont :
+
+*  _fsexes_: compilations avec _F#_ des sources en _*.fs_,
+*  _smlexes_ : complations avec _mlton_ des sources en _*.sml_ à l'aides des fichiers _*.mlb_,
+*  _all_ : les deux cibles précédentes,
+*  _clean_ : nettoie les exécutables et les éventuels résidus de compilation.
 
 __Note importante__ : __Makefile__ est fait pour la version _GNU_ de _make_. Cela signifie que sous BSD, il faut utiliser _gmake_.
 

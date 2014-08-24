@@ -3,16 +3,18 @@ ml-games
 
 Jouer avec ML, un langage que j'aime bien mais que je ne maîtrise pas (encore). J'utilise __PolyML__, un interprèteur/compilateur et __mlton__, un compilateur. Ils sont tous deux au standard de _SML/NJ_, chacun avec quelques variations qui ne m'affectent pas (encore).
 
-On notera que _SML/NJ_ fait partie des ancêtres de _OCaml_, de l'INRIA, et de _F#_ crée par Microsoft.
+On notera que _SML/NJ_ fait partie des ancêtres de _OCaml_, de l'INRIA, lui-même ancêtre de _F#_ crée par Microsoft.
 
 On notera aussi ma tendance à pratiquer la _programmation paresseuse_ qui consiste à ouvrir l'éditeur de texte, surveiller twitter, s'occuper du repas, revenir à l'éditeur et ainsi de suite. Ca prend du temps...
 
-N'hésitez pas à vous balader dans le wiki: https://github.com/BernardBeefheart/ml-games/wiki!
+N'hésitez pas à vous balader dans le wiki: https://github.com/BernardBeefheart/ml-games/wiki (y a encore du boulot, hein?).
 
 pourquoi _ML_
 -------------
 
-C'est un langage fonctionnel sans orientation objet, deux points qui me conviennent, l'orientation objet de la programmation ne me plaît plus vraiment.
+C'est un langage fonctionnel sans orientation objet (à la base), deux points qui me conviennent, l'orientation objet de la programmation ne me plaît plus vraiment.
+
+On rouvera bien quelques exemples de code en _F#_ et _OCaml_, deux membres de la famille _ML_, légèrements dissidents, ils intègrent une orientation objet.
 
 y a quoi là dedans
 -------------------

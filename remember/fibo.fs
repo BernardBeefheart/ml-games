@@ -61,19 +61,11 @@ let doit str_numberOfTests =
 
         let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
 
+
         let rec show_all_fibos n =
             if n = numberOfTests
             then show_fibo n
             else show_fibo n; show_all_fibos (n + 1)
-
-        (* 
-        let rec show_all_fibos n =
-            match n with
-            | 0 -> show_fibo 0
-            | _ -> show_fibo n; show_all_fibos (n - 1)
-
-        show_all_fibos numberOfTests
-        *)
 
         show_all_fibos 0
         0

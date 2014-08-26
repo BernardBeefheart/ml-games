@@ -2,8 +2,18 @@
 # Makefile
 # pour créer les exécutables du répertoire 'remember'
 
+OS = $(shell uname)
+is_cygwin = $(findstring CYGWIN, $(OS))
+
 MLC = mlton
-FSC = fsharpc --debug- --warn:5 --consolecolors+ --standalone --tailcalls+ --optimize+ 
+
+ifeq ($(is_cygwin), CYGWIN)
+	_fsc = Fsc.exe
+else
+	_fsc = fsharpc
+endif
+
+FSC = $(_fsc) --debug- --warn:5 --consolecolors+ --standalone --tailcalls+ --optimize+
 
 SMLEXES = o/remember.exe o/fibo.exe o/TestSig.exe
 FSEXES = o/fsfibo.exe

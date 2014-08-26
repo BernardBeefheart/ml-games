@@ -3,16 +3,17 @@
  *
  * version FSharp
  * calcul des nombres de Fibonacci avec memoïzation
- * 
+ *
+ * compilation (Windows):
+ * Fsc.exe --warn:5 --consolecolors+ --standalone --out:fsfibo.exe --tailcalls+ --optimize+ fibo.fs
  * compilation (PCBSD):
  * fsharpc --warn:5 --consolecolors+ --standalone --out:fsfibo.exe --tailcalls+ --optimize+ fibo.fs
- *
- * valeur maximale du paramètre acceptable sans erreur : 15361
- * problème de pile!
  *
  *)
 
 module fibo
+
+exception NegativeNumber of string
 
 (*
  * dohelp :
@@ -21,6 +22,7 @@ module fibo
 let dohelp exitValue =
     printfn "Usage:"
     printfn "   fibo.exe Number"
+    printfn "   where Number is a positive integer"
     exitValue;;
 
 (*
@@ -29,8 +31,13 @@ let dohelp exitValue =
  * renvoie la vraie fonction de calcul de fibonacci
  *)
 let memoiseFibo n =
-    let (memo : bigint array) = Array.zeroCreate (n + 3)
+    let asize = if n < 3
+                then 3
+                else n + 1
 
+    let (memo : bigint array) = Array.zeroCreate asize
+
+    (* pour les versions Unix! *)
     let rec resetMemo k =
         if k >= 0
         then memo.[k] <- 0I; resetMemo (k - 1)
@@ -47,7 +54,8 @@ let memoiseFibo n =
                         f
                     else memo.[n]
 
-    resetMemo (n + 2)
+    (* pour les versions Unix! *)
+    resetMemo (asize - 1)
     get_fibo;;
 
 (*
@@ -57,6 +65,10 @@ let memoiseFibo n =
 let doit str_numberOfTests =
     try
         let numberOfTests = int str_numberOfTests
+        if numberOfTests < 0
+            then raise (NegativeNumber ("Error: Negative number!"))
+            else printfn ""
+
         let lafibo = memoiseFibo numberOfTests
 
         let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
@@ -70,8 +82,9 @@ let doit str_numberOfTests =
         show_all_fibos 0
         0
     with
-        | :? System.FormatException -> eprintfn "Bad argument!"; dohelp 1
-        | _ -> eprintfn "Default?"; dohelp 2;;
+        | NegativeNumber(str) -> eprintfn "%s" str; dohelp 1
+        | :? System.FormatException -> eprintfn "Error: Bad argument!"; dohelp 2
+        | _ -> eprintfn "Error: Default?"; dohelp 3;;
 
 
 

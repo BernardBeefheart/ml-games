@@ -15,6 +15,13 @@ module fibo
 
 exception NegativeNumber of string
 
+[<Literal>]
+let ExitSuccess = 0
+let ExitErrorNegative = 1
+let ExitErrorBadArgs = 2
+let ExitErrorTooMuchArgs = 3
+let ExitErrorUnknown = 254
+
 (*
  * dohelp :
  * affiche un texte d'aide et retourne son paramètre
@@ -82,9 +89,9 @@ let doit str_numberOfTests =
         show_all_fibos 0
         0
     with
-        | NegativeNumber(str) -> eprintfn "%s" str; dohelp 1
-        | :? System.FormatException -> eprintfn "Error: Bad argument!"; dohelp 2
-        | _ -> eprintfn "Error: Default?"; dohelp 3;;
+        | NegativeNumber(str) -> eprintfn "%s" str; dohelp ExitErrorNegative
+        | :? System.FormatException -> eprintfn "Error: Bad argument!"; dohelp ExitErrorBadArgs
+        | _ -> eprintfn "Error: Default?"; dohelp ExitErrorUnknown;;
 
 
 
@@ -92,7 +99,9 @@ let doit str_numberOfTests =
 let main args =
     let l = args.Length
 
-    if l = 1
-        then doit args.[0]
-        else dohelp 0;;
+    let onArgs = function
+        | 0 -> dohelp ExitSuccess
+        | 1 -> doit args.[0]
+        | _ -> dohelp ExitErrorTooMuchArgs
 
+    onArgs l;;

@@ -12,4 +12,8 @@
 *.cmxa
 
 o/
+obj/
+bin/
 *.exe
+*.mdb
+/.project

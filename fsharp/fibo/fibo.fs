@@ -13,24 +13,11 @@
 
 module fibo
 
+open Constants
+open Help
+
 exception NegativeNumber of string
 
-[<Literal>]
-let ExitSuccess = 0
-let ExitErrorNegative = 1
-let ExitErrorBadArgs = 2
-let ExitErrorTooMuchArgs = 3
-let ExitErrorUnknown = 254
-
-(*
- * dohelp :
- * affiche un texte d'aide et retourne son paramètre
- *)
-let dohelp exitValue =
-    printfn "Usage:"
-    printfn "   fibo.exe Number"
-    printfn "   where Number is a positive integer"
-    exitValue;;
 
 (*
  * memoiseFibo

@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="startfsharp.fsproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="fibo.fs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DoFibo.fs">
     <Files>
-      <File FileName="fibo.fs" Line="1" Column="1" />
-      <File FileName="Constants.fs" Line="1" Column="1" />
-      <File FileName="Constants.fsi" Line="10" Column="10" />
-      <File FileName="Help.fs" Line="20" Column="20" />
+      <File FileName="fibo.fs" Line="30" Column="30" />
+      <File FileName="DoFibo.fs" Line="17" Column="17" />
+      <File FileName="DoFibo.fsi" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

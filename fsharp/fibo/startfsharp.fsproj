@@ -29,8 +29,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants.fsi" />
+    <Compile Include="Help.fsi" />
+    <Compile Include="DoFibo.fsi" />
     <Compile Include="Constants.fs" />
     <Compile Include="Help.fs" />
+    <Compile Include="DoFibo.fs" />
     <Compile Include="fibo.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />

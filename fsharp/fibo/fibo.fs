@@ -76,19 +76,17 @@ let doit str_numberOfTests =
         show_all_fibos 0
         0
     with
-        | NegativeNumber(str) -> eprintfn "%s" str; dohelp ExitErrorNegative
-        | :? System.FormatException -> eprintfn "Error: Bad argument!"; dohelp ExitErrorBadArgs
-        | _ -> eprintfn "Error: Default?"; dohelp ExitErrorUnknown;;
+        | NegativeNumber(str) -> dohelp ExitErrorNegative
+        | :? System.FormatException -> dohelp ExitErrorBadArgs
+        | _ -> dohelp ExitErrorUnknown;;
 
 
 
 [<EntryPoint>]
 let main args =
-    let l = args.Length
-
     let onArgs = function
         | 0 -> dohelp ExitSuccess
         | 1 -> doit args.[0]
         | _ -> dohelp ExitErrorTooMuchArgs
 
-    onArgs l;;
+    onArgs args.Length;;

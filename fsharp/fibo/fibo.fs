@@ -31,16 +31,9 @@ let memoiseFibo n =
 
     let (memo : bigint array) = Array.zeroCreate asize
 
-    (* pour les versions Unix! *)
-    let rec resetMemo k =
-        if k >= 0
-        then memo.[k] <- 0I; resetMemo (k - 1)
-        else ()
-
     let rec get_fibo = function
         | 0 -> 0I
         | 1 -> 1I
-        | 2 -> 1I
         | n -> if memo.[n] = 0I
                     then
                         let f = get_fibo (n - 1) + get_fibo (n - 2)
@@ -48,8 +41,6 @@ let memoiseFibo n =
                         f
                     else memo.[n]
 
-    (* pour les versions Unix! *)
-    resetMemo (asize - 1)
     get_fibo;;
 
 (*
@@ -65,13 +56,11 @@ let doit str_numberOfTests =
 
         let lafibo = memoiseFibo numberOfTests
 
-        let show_fibo k = printfn "fibo %d = %s" k (string (lafibo k))
-
+        let show_fibo k = printfn "fibo %d -> %s" k (string (lafibo k))
 
         let rec show_all_fibos n =
-            if n = numberOfTests
-            then show_fibo n
-            else show_fibo n; show_all_fibos (n + 1)
+            show_fibo n
+            if n <> numberOfTests then show_all_fibos (n + 1)
 
         show_all_fibos 0
         0

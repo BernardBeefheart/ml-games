@@ -2,13 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="fibo.fs">
     <Files>
-      <File FileName="DoFibo.fs" Line="6" Column="6" />
-      <File FileName="DoFibo.fsi" Line="1" Column="1" />
-      <File FileName="Help.fs" Line="6" Column="6" />
-      <File FileName="Src/Constants.fsi" Line="17" Column="17" />
-      <File FileName="Help.fsi" Line="1" Column="1" />
-      <File FileName="Src/Constants.fs" Line="17" Column="17" />
-      <File FileName="fibo.fs" Line="6" Column="6" />
+      <File FileName="Src/Constants.fsi" Line="1" Column="1" />
+      <File FileName="Src/Constants.fs" Line="1" Column="1" />
+      <File FileName="fibo.fs" Line="11" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

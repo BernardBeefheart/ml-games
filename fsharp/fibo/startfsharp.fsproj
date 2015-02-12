@@ -30,10 +30,10 @@
   <ItemGroup>
     <Compile Include="Src\Constants.fsi" />
     <Compile Include="Src\Constants.fs" />
-    <Compile Include="Help.fsi" />
-    <Compile Include="DoFibo.fsi" />
-    <Compile Include="Help.fs" />
-    <Compile Include="DoFibo.fs" />
+    <Compile Include="Src\Help.fsi" />
+    <Compile Include="Src\DoFibo.fsi" />
+    <Compile Include="Src\Help.fs" />
+    <Compile Include="Src\DoFibo.fs" />
     <Compile Include="fibo.fs">
     </Compile>
   </ItemGroup>

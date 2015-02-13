@@ -34,4 +34,4 @@ then
 fi
 
 (../bin/${version}/startfsharp.exe  1 2; ../bin/${version}/startfsharp.exe a; ../bin/${version}/startfsharp.exe 10) > result.txt 2>&1
-diff result.txt reference.txt
+diff result.txt reference.txt && echo "OK"

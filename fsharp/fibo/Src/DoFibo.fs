@@ -56,7 +56,8 @@ let doFibo (str_numberOfTests:string) : int =
             if n <> numberOfTests then show_all_fibos (n + 1)
 
         show_all_fibos 0
-        0
+        ExitSuccess
+
     with
         | NegativeNumber(str) -> dohelp ExitErrorNegative
         | :? System.FormatException -> dohelp ExitErrorBadArgs

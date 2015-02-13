@@ -18,7 +18,8 @@ exception NegativeNumber of string
 
 (*
  * memoiseFibo n
- * mémoïsation de la suite de fibonacci
+ * mémoïsation de la suite de fibonacci. cette fonction est une fermeture qui garde 
+ * le tableau des valeurs calculées en mémoire
  * n : le nombre de Fibonacchi à calculer
  * return : renvoie la vraie fonction de calcul de fibonacci
  *)

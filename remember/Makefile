@@ -21,7 +21,7 @@ FSEXES = o/fsfibo.exe
 fsexes: odir $(FSEXES)
 smlexes: odir $(SMLEXES)
 
-all: odir fsexes smlexes
+all: odir $(SMLEXES)
 
 o/%.exe: %.mlb %.sml
 	$(MLC) -output $@ $<

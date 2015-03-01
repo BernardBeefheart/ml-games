@@ -14,7 +14,10 @@ open Help
 
 exception NegativeNumber of string
 
-
+let rec g = function
+    | 0 -> 0I
+    | 1 -> 1I
+    | n -> g (n - 1) + g (n - 2);;
 
 (*
  * memoiseFibo n

@@ -17,13 +17,11 @@ open Constants
 open Help
 open DoFibo
 
-
-
 [<EntryPoint>]
-let main args =
-    let onArgs = function
+let main args = 
+    let onArgs = 
+        function 
         | 0 -> Help.dohelp ExitSuccess
         | 1 -> DoFibo.doFibo args.[0]
         | _ -> Help.dohelp ExitErrorTooMuchArgs
-
-    onArgs args.Length;;
+    onArgs args.Length

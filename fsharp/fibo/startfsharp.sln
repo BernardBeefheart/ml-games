@@ -14,4 +14,20 @@ Global
 		{CBFA8BEE-2BD7-46EB-8B08-6007A6EE1AC0}.Release|x86.ActiveCfg = Release|x86
 		{CBFA8BEE-2BD7-46EB-8B08-6007A6EE1AC0}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.VersionControlPolicy = $2
+		$2.CommitMessageStyle = $3
+		$3.Indent = @\t
+		$3.LastFilePostfix = "@:\n  "
+		$2.inheritsSet = Mono
+		$0.ChangeLogPolicy = $4
+		$4.UpdateMode = ProjectRoot
+		$4.MessageStyle = $5
+		$5.LineAlign = 0
+		$4.inheritsSet = Mono
+	EndGlobalSection
 EndGlobal

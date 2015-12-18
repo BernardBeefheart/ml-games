@@ -1,15 +1,46 @@
 ﻿<Properties StartupItem="startfsharp.fsproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Src/DoFibo.fs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="fibo.fs">
     <Files>
       <File FileName="Src/Constants.fsi" Line="1" Column="1" />
       <File FileName="Src/Constants.fs" Line="1" Column="1" />
-      <File FileName="fibo.fs" Line="5" Column="5" />
-      <File FileName="Src/DoFibo.fs" Line="19" Column="19" />
+      <File FileName="fibo.fs" Line="23" Column="15" />
+      <File FileName="Src/DoFibo.fs" Line="1" Column="1" />
+      <File FileName="Src/Help.fsi" Line="1" Column="1" />
+      <File FileName="Src/DoFibo.fsi" Line="1" Column="1" />
+      <File FileName="Src/Help.fs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.startfsharp>
+    <MonoDevelop.Ide.CustomExecutionModes>
+      <Data Name="Default (Custom)" Id="6a916fe6-fb1f-4351-a336-14f69fd172eb" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="8" WorkingDirectory="/home/bernard/git/ml-games/fsharp/fibo" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+          <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
+            <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+      <Data Name="Default (Custom 2)" Id="acde206f-7a59-4131-89fb-5fad443f75da" ModeId="Default">
+        <CommandData>
+          <Item Key="MonoDevelop.Ide.Execution.CustomArgsCustomizer">
+            <Value Arguments="8" WorkingDirectory="/home/bernard/git/ml-games/fsharp/fibo" ctype="CustomArgsExecutionModeData">
+              <EnvironmentVariables />
+            </Value>
+          </Item>
+          <Item Key="MonoDevelop.Ide.Execution.MonoExecutionCustomizer">
+            <Value ctype="MonoExecutionParameters" />
+          </Item>
+        </CommandData>
+      </Data>
+    </MonoDevelop.Ide.CustomExecutionModes>
+  </MonoDevelop.Ide.ItemProperties.startfsharp>
 </Properties>

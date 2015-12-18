@@ -1,4 +1,9 @@
 2015-12-18  bernard  <bernard.beefheart@gmail.com>
 
+	* Help.fs:
+	* Help.fsi: Modification de commentaires
+
+2015-12-18  bernard  <bernard.beefheart@gmail.com>
+
 	* fibo.fs: Modifications pour tester Git depuis Monodevelop
 

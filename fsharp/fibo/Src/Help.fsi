@@ -1,6 +1,6 @@
 ﻿(*
  * Help.fsi
- * affichage de l'aide
+ * affichage de l'aide, avec un message d'erreur si nécessaire
  *)
 
 module Help
